@@ -1,0 +1,7 @@
+[2026-10-11T04:17:46Z] === AST ITERATION 1 START | repo=jazzband/django-ical sha=47695cbc ===
+[2026-10-11T04:17:46Z] [iter=1] PHASE START: ast repo=jazzband/django-ical sha=47695cbc
+[2026-10-11T04:17:46Z] [iter=1] Building AST aggregate chunks
+[2026-10-11T04:17:56Z] [iter=1] AST chunks built count=1 triples=86690
+[2026-10-11T04:17:56Z] [iter=1] AST .complete marker written path=/home/runner/work/forx/forx/storage/aggregate/ast/47695cbc9b3a73b594840a1e985ea12d4d701b1e/.complete
+[2026-10-11T04:17:56Z] [iter=1] PHASE END: ast elapsed_s=9 elapsed_min=0.2
+[2026-10-11T04:17:56Z] [iter=1] Wrote .next-action.json next_action=enrich path=/home/runner/work/forx/forx/storage/aggregate/.next-action.json
