@@ -1,1 +1,113 @@
-Initializing
+# Repolex Knowledge Graph of jazzband/django-ical
+
+RDF knowledge graph data for [jazzband/django-ical](https://github.com/jazzband/django-ical), parsed by [repolex](https://repolex.ai).
+
+> **Note**: This data is experimental and subject to change without notice.
+
+## How to use this data
+
+The easiest way to get started is to install the [rlex](https://github.com/repolex-ai/rlex) query tool:
+
+```bash
+cargo install --git https://github.com/repolex-ai/rlex
+```
+
+Verify the install:
+
+```bash
+rlex --help
+```
+
+**rlex is designed to be used primarily by LLMs in a terminal.** Start up your favorite AI assistant and ask it to use rlex. It handles the SPARQL — you just ask questions in plain English.
+
+To load this repo's data:
+
+```bash
+rlex download jazzband/django-ical
+```
+
+Consult `rlex --help` for other options, including SPARQL queries, HTTP server, and interactive visualization.
+
+## Data structure
+
+All data is stored as gzip-compressed [N-Quads](https://www.w3.org/TR/n-quads/) (`.nq.gz`), a standard RDF format that can be loaded into any triplestore or graph database.
+
+```
+.
+├── aggregate
+│   ├── ast
+│   │   └── 47695cbc9b3a73b594840a1e985ea12d4d701b1e
+│   │       └── chunk-001.nq.gz
+│   └── repolex
+│       └── 47695cbc9b3a73b594840a1e985ea12d4d701b1e
+│           └── chunk-001.nq.gz
+├── blob
+│   ├── 0f8c2f860018a2cd1952ebf98f8ab7e9cf14bed7.nq.gz
+│   ├── 120145badb9d7b2b4156928cc2d2991564a6fe56.nq.gz
+│   ├── 13c84a9633e16e57bc29c5fb5d060dbeefdf7e86.nq.gz
+│   ├── 19125246b3030c2152c36debe1d84edc5c5bb613.nq.gz
+│   ├── 1be67f2593a9d644627f156b5a8f50f926261300.nq.gz
+│   ├── 1d2f8b9264e82c7947fc2bd2d92a2e0b66773341.nq.gz
+│   ├── 21b11c9ff0f68e78200445d712a452b0a39fcc9e.nq.gz
+│   ├── 2702e95cda2b8b35a84154de3636413a475ecc79.nq.gz
+│   ├── 2f9159ece9f5b88dba34c08ad985c90a16054304.nq.gz
+│   ├── 3304e1d2c8502cdf5ad110114d31f23a1bb23d86.nq.gz
+│   ├── 38904b82d4ce32d33962266304ca97560411e59d.nq.gz
+│   ├── 399cc3ea6557208483e4bef71e98d9cdf7536f05.nq.gz
+│   ├── 39abba011989fd9005ce80f22e9cb7ca15251d5d.nq.gz
+│   ├── 3babd16925e7d696a6e06dae5adde40996a0badd.nq.gz
+│   ├── 3c2dd05bdd6c51cbf16f0dec9a90b8de2b77c0c4.nq.gz
+│   ├── 3c6441317474187f19bf293276769601e1caab9f.nq.gz
+│   ├── 4aef5cd6c724e5ca6be1e1274309e5a8f6929e52.nq.gz
+│   ├── 4d453482f5b9e17b67b3c03d184bf502dfacae91.nq.gz
+│   ├── 4e6a92c443efecb47ac790fb7170e4a27d8069fd.nq.gz
+│   ├── 64031ba29b72ef76749de95133d389fe827bf6fc.nq.gz
+│   ├── 7e98e0d1f54f0d76ec4c46f6dab5d631f942d341.nq.gz
+│   ├── 80dab41ee650d3b50a1a9e4a2359204280b12438.nq.gz
+│   ├── 9d312b206f2273d2a79f4886b2679b747868b23e.nq.gz
+│   ├── b4dd28934ae06bdff66616283f275f23ede2b6eb.nq.gz
+│   ├── bb8a6ba77a8ebcb506ed81e1306a9cb61031e24f.nq.gz
+│   ├── bbaf82fa5b60aeee99679e237966db6ea007ffdc.nq.gz
+│   ├── c66ab7edcfb4759192dceb6b2ba33fc604873406.nq.gz
+│   ├── cab76dea6ae74caa6fa66d39f228a6c8f9c58a7d.nq.gz
+│   ├── d4edf56cf6a4386dbb70a8976a49c691d9f93694.nq.gz
+│   ├── d76c92b6f8ccc72630aac7f77c44dd1c86a64a82.nq.gz
+│   ├── dba5efa39f37b35e7374366ac71a60c95e926968.nq.gz
+│   ├── e0d5efab56fb94577e7804603eb6f21f36977cb2.nq.gz
+│   ├── e69de29bb2d1d6434b8b29ae775ad8c2e48c5391.nq.gz
+│   └── f3e3266a150583a7b6670032cb2ce03ad60ceb1d.nq.gz
+├── branch
+│   └── branch.nq.gz
+├── commit
+│   └── commit.nq.gz
+├── filetree
+│   └── 47695cbc9b3a73b594840a1e985ea12d4d701b1e.nq.gz
+├── issue
+│   └── issue.nq.gz
+├── pr
+│   └── pr.nq.gz
+└── tag
+    └── tag.nq.gz
+
+13 directories, 42 files
+```
+
+| Directory | What it contains |
+|-----------|-----------------|
+| `blob/` | Per-file AST graphs, content-addressed by git blob SHA. Each file in the source repo gets its own graph. |
+| `aggregate/ast/` | Combined AST graph per parsed commit. Merges all blob graphs for a snapshot of the entire codebase at that point. |
+| `aggregate/lsp/` | Language Server Protocol enrichment: resolved symbols, definitions, references, and type information. |
+| `aggregate/dataflow/` | Interprocedural data flow edges between functions and modules. |
+| `aggregate/repolex/` | Combined graph (AST + LSP + dataflow) per commit. |
+| `commit/` | Git commit metadata (author, date, message, parent links). |
+| `branch/` | Branch metadata. |
+| `tag/` | Tag metadata. |
+| `filetree/` | File tree snapshots per commit (which files existed and their blob SHAs). |
+| `audit/` | Code architecture and graph audit reports per commit. |
+
+## Source repository
+
+[jazzband/django-ical](https://github.com/jazzband/django-ical)
+
+---
+*Parsed on 2026-10-11 by [repolex](https://repolex.ai)*
